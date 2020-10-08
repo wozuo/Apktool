@@ -45,3 +45,9 @@ dependencies {
 
     testCompile depends.xmlunit
 }
+
+jar {
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  }
+}
